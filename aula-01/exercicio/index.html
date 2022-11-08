@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo</title>
+
+    <style>
+      .card-de-produto {
+        background-color: #eee;
+        width: fit-content;
+        padding: 15px;
+        border-radius: 7px;
+        text-align: center;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-de-produto">
+      <img
+        src="https://cobasi.vteximg.com.br/arquivos/ids/193049/Brinquedo-Pelucia-Macaco-Chalesco.jpg?v=636560362256230000"
+        width="100"
+        alt=""
+      />
+      <h2>Produto</h2>
+      <p>R$ 9,99</p>
+    </div>
+
+    <script>
+      class CardDeProduto {
+        imagem;
+        nome;
+        preco;
+        estaEmPromocao = false;
+
+        constructor(imagem, nome, preco, estaEmPromocao = false) {
+          this.imagem = imagem;
+          this.nome = nome;
+          this.preco = preco;
+          this.estaEmPromocao = estaEmPromocao;
+          this.element = document.createElement("div");
+        }
+
+        renderizar() {
+          const img = document.createElement("img");
+          const h2 = document.createElement("h2");
+          const p = document.createElement("p");
+
+          img.setAttribute("src", this.imagem);
+          img.setAttribute("width", 100);
+          h2.innerHTML = this.nome;
+          p.innerHTML = this.preco.toLocaleString("pt-br", {
+            style: "currency",
+            currency: "BRL",
+          });
+
+          this.element.append(img, h2, p);
+
+          document.body.append(this.element);
+
+          this.estilizar();
+        }
+
+        estilizar() {
+          this.element.classList.add("card-de-produto");
+          if (this.estaEmPromocao)
+            this.element.style.backgroundColor = "#AA0000";
+        }
+      }
+
+      const imagem =
+        "https://cobasi.vteximg.com.br/arquivos/ids/193049/Brinquedo-Pelucia-Macaco-Chalesco.jpg?v=636560362256230000";
+
+      const card = new CardDeProduto(imagem, "Macaco", 9.99);
+      card.renderizar();
+      card.estilizar();
+
+      const promoCard = new CardDeProduto(imagem, "Macaco", 9.99, true);
+      promoCard.renderizar();
+      promoCard.estilizar();
+    </script>
+  </body>
+</html>
