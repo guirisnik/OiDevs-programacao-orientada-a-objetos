@@ -22,3 +22,8 @@ A entidade `Postagem` deve ser capaz de:
 
 A entidade `Administrador` deve ser uma especialização de `Usuario`. Apenas um administrador deve ser capaz de excluir um usuário.
 
+## Obervações
+
+- Podem criar os atributos que julgarem necessários para as entidades;
+- Não precisam se limitar às entidades `Usuario`, `Administrador` e `Postagem` - se fizer sentido, podem criar outras!
+
