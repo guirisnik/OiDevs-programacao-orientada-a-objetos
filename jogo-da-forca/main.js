@@ -4,11 +4,23 @@ import Partida from "./Partida.class.mjs";
 // const primeiraRodada = new Partida('paralelepipedo');
 const controlador = new Controlador();
 
-const botaoEnviarPalpite = document.getElementById('enviar-palpite')
+const botaoEnviarPalpite = document.getElementById("enviar-palpite");
 
-botaoEnviarPalpite.addEventListener('click', function() {
-    const inputDoPalpite = document.getElementById('palpite');
-})
+botaoEnviarPalpite.addEventListener("click", function () {
+  const inputDoPalpite = document.getElementById("palpite");
+
+  controlador.processarPalpite(inputDoPalpite.value);
+
+  inputDoPalpite.value = "";
+});
+
+const botaoReiniciar = document.getElementById("reiniciar");
+
+botaoReiniciar.addEventListener(
+  "click",
+  controlador.reiniciar.bind(controlador)
+);
+
 // const posicaoPrimeiroPalpite = primeiraRodada.posicaoDaLetraSeElaExistir('a');
 // console.log(posicaoPrimeiroPalpite); // retorno esperado: [1, 3]
 // console.log(primeiraRodada.tentativasRestantes); // retorno esperado: 10

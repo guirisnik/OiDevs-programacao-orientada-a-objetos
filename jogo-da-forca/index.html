@@ -21,18 +21,17 @@
         column-gap: 3px;
       }
 
-      #resetar {
+      #reiniciar {
         margin-top: 10px;
       }
     </style>
   </head>
   <body>
     <h1>Jogo da forca</h1>
-    <p class="tentativas-restantes">7 tentativas restantes</p>
-    <p class="letras-erradas">z, y, w</p>
+    <p id="tentativas-restantes" class="tentativas-restantes"></p>
+    <p id="letras-erradas" class="letras-erradas"></p>
 
-    <div class="container-da-palavra">
-    </div>
+    <div class="container-da-palavra"></div>
 
     <input
       type="text"
@@ -41,8 +40,8 @@
       placeholder="Insira seu palpite"
     />
     <button id="enviar-palpite">Enviar</button>
-    <br/>
-    <button id="resetar">Reiniciar Partida</button>
+    <br />
+    <button id="reiniciar">Reiniciar Partida</button>
   </body>
   <script src="main.js" type="module"></script>
 </html>
