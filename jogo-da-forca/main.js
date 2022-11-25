@@ -1,8 +1,12 @@
 import Controlador from "./Controlador.class.mjs";
+import Jogador from "./Jogador.class.mjs";
 import Partida from "./Partida.class.mjs";
 
 // const primeiraRodada = new Partida('paralelepipedo');
-const controlador = new Controlador();
+const jogador1 = new Jogador("Julia");
+const jogador2 = new Jogador("Vitoria");
+const jogador3 = new Jogador("Gabi");
+const controlador = new Controlador(jogador1, jogador2, jogador3);
 
 const botaoEnviarPalpite = document.getElementById("enviar-palpite");
 

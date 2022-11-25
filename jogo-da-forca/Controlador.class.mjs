@@ -1,17 +1,48 @@
+import Jogador from "./Jogador.class.mjs";
 import PalpiteErradoError from "./PalpiteErrado.error.mjs";
 import PalpiteJaFoiDadoError from "./PalpiteJaFoiDado.error.mjs";
 import Partida from "./Partida.class.mjs";
 
 export default class Controlador {
   #partida;
+  #jogadores = [new Jogador()];
+  #jogadorDaVez = 0;
   //   #espacosDasLetras;
 
-  constructor() {
+  constructor(...jogadores) {
     this.#partida = new Partida("paralelepipedo");
+    this.#jogadores = jogadores;
 
     this.#renderizarEspacosDasLetras();
     this.#renderizarTentativasRestantes();
+    this.#renderizarJogadores();
+
+    document.getElementById("jogador-0").classList.add("jogador-da-vez");
     // this.#espacosDasLetras = this.#renderizarEspacosDasLetras()
+  }
+
+  #rotacionarJogadorDaVez() {
+    document
+      .getElementById(`jogador-${this.#jogadorDaVez}`)
+      .classList.remove("jogador-da-vez");
+
+    do {
+      this.#jogadorDaVez = (this.#jogadorDaVez + 1) % this.#jogadores.length;
+    } while (this.#jogadores[this.#jogadorDaVez].perdeu);
+
+    document
+      .getElementById(`jogador-${this.#jogadorDaVez}`)
+      .classList.add("jogador-da-vez");
+  }
+
+  #renderizarJogadores() {
+    document.getElementById("jogadores").innerHTML = this.#jogadores
+      .map((jogador, index) => {
+        return jogador.perdeu
+          ? `<li class="jogador-perdeu" id="jogador-${index}">${jogador.nome}: ${jogador.pontos} pontos</li>`
+          : `<li id="jogador-${index}">${jogador.nome}: ${jogador.pontos} pontos</li>`;
+      })
+      .join("");
   }
 
   #renderizarEspacosDasLetras() {
@@ -40,6 +71,9 @@ export default class Controlador {
         const posicoes = this.#partida.posicaoDaLetraSeElaExistir(palpite);
 
         posicoes.forEach((index) => this.#revelarLetra(palpite, index));
+
+        this.#jogadores[this.#jogadorDaVez].adicionarPontos(1);
+        this.#renderizarJogadores();
       } catch (error) {
         if (error instanceof PalpiteErradoError) {
           this.#renderizarTentativasRestantes();
@@ -50,6 +84,8 @@ export default class Controlador {
           console.error(error);
         }
       }
+
+      this.#rotacionarJogadorDaVez();
     } else if (palpite.length > 1) {
       const ehAPalavraCorreta = this.#partida.palavraCorresponde(palpite);
 
@@ -57,8 +93,15 @@ export default class Controlador {
         palpite.split("").forEach(this.#revelarLetra);
         this.#desabilitarPalpites();
         alert("Parabéns! Você ganhou! :D");
+        this.#jogadores[this.#jogadorDaVez].adicionarPontos(5);
+        this.#renderizarJogadores();
       } else {
-        alert("Palavra está incorreta! Tente novamente");
+        document
+          .getElementById(`jogador-${this.#jogadorDaVez}`)
+          .classList.add("jogador-perdeu");
+        this.#jogadores[this.#jogadorDaVez].perdeu = true;
+        alert("Palavra está incorreta! Você perdeu :(");
+        this.#rotacionarJogadorDaVez();
       }
     }
 

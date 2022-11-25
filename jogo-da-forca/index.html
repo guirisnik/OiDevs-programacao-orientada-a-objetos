@@ -24,6 +24,16 @@
       #reiniciar {
         margin-top: 10px;
       }
+
+      .jogador-da-vez {
+        color: red;
+        text-decoration: underline;
+      }
+
+      .jogador-perdeu {
+        text-decoration: line-through;
+        color: grey;
+      }
     </style>
   </head>
   <body>
@@ -42,6 +52,8 @@
     <button id="enviar-palpite">Enviar</button>
     <br />
     <button id="reiniciar">Reiniciar Partida</button>
+
+    <ul id="jogadores"></ul>
   </body>
   <script src="main.js" type="module"></script>
 </html>
