@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url(../assets-front/background-ada-main.svg);
+  height: 100vh;
+  font-family: 'Exo', sans-serif;
+  
+  background-origin: content-box;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-color: #181C23;
+}
+
+#page  {
+  text-align: center;
+}
+
+header { 
+  color:  #A6F750;
+  margin-top: 85px;
+}
+
+main {
+  color: white;
+  
+}
+
+form {
+  width: 300px;
+  margin: 100px auto;
+  text-align: center;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+form h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+input {
+  height: 40px;
+  width: 100%;
+  padding: 10px 85px 10px 40px;
+  
+  font-family: 'Exo', sans-serif;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+
+
+  background-color: #282C33;
+  border: none;
+  border-radius: 12px 12px 0px 0px;
+
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+form button {
+  background-color: #A6F750;
+  font-family: 'Exo', sans-serif;
+  font-weight: 700;
+  color: #181C23;
+
+  border: none;
+  border-radius: 12px;
+  height: 40px;
+  width: 180px;
+  margin: 5px auto;
+
+}
+
+form p {
+  font-weight: 400;
+  font-size: 10px;
+}
+
+form p a {
+  color: #A6F750;
+  text-decoration: none;
+  
+}
+
+form p a:hover, form p a:active {
+  color: #7ebb3d;
+}
+
+

@@ -1,0 +1,21 @@
+{
+  "name": "connectada",
+  "version": "1.0.0",
+  "description": "Trabalho realizado como critério de avaliação do módulo 3 - OiDevs - Front-end",
+  "type": "module",
+  "main": "./final/feed/feed.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GisellePiasetzki/ConnectAda.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GisellePiasetzki/ConnectAda/issues"
+  },
+  "homepage": "https://github.com/GisellePiasetzki/ConnectAda#readme"
+}
