@@ -1,0 +1,37 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/final/style.css">
+    <title>Novo Post</title>
+    <script type = "module" src="./newpost.js"></script>
+</head>
+<body>
+    <header>
+        <div></div>
+        <div class="headerContainerNewPost">
+            <div class="btnCancel">
+                <button>
+                    <a href="../feed/feed.html">Cancel</a>
+                </button>
+            </div>
+            <div class="btnNewPost">
+                <button type="submit" form="formPost" id="btnPost" onclick="postar();return false">Postar</button>
+        </div>
+    </header>
+    <main class="newPost">
+            <div class="containerForms">
+                <div class="avatarIcon">
+                    <img src="../assets-front/user-profile.svg" alt="">
+                </div>
+                <form action="" id="formPost">
+                    <textarea name="textarea" id="textArea" cols="34" rows="10" placeholder="O que está acontecendo?" autofocus ></textarea>
+                </form>
+            </div>
+    </main>
+
+    
+
+</body>
+</html>
