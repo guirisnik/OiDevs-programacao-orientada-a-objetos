@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectAda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="bg-light">
+    <div class="d-flex flex-column tela" id="tela-login">
+        <div class="modal fade" id="modal-cadastro" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-2 m-0 lh-1">Cadastre-se<br>
+                            <small class="fw-normal fs-6 lh-1">É rápido e fácil.</small>
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3" id="form-cadastro">
+                            <div class="col-md-12 input-group-lg">
+                                <input type="text" class="form-control" name="nome-completo" placeholder="Nome completo" required>
+                            </div>
+                            <div class="col-md-6 input-group-lg">
+                                <input type="text" class="form-control" name="usuario" placeholder="Usuário" required>
+                            </div>
+                            <div class="col-md-6 input-group-lg">
+                                <input type="password" class="form-control" name="senha" placeholder="Senha" required>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text">github.com/</span>
+                                    <input type="text" class="form-control" name="usuario-github" placeholder="usuário do github">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success btn-lg w-75 m-auto mt-2" type="submit">Cadastre-se</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex h-100 flex-column align-items-center">
+            <div class="w-75 d-flex flex-column flex-lg-row flex-grow-1 align-items-center justify-content-center">
+                <div class="col-12 col-lg-6 col-xl-8 mb-3 mb-lg-0 text-center text-lg-start">
+                    <h1 class="mb-3 text-success display-3 display-lg-2 fw-bold">
+                        Connect<span class="fw-light text-black-50">Ada</span>
+                    </h1>
+                    <p class="fs-3 fs-lg-2 fw-light">
+                        Conectando desenvolvedores que odeiam códigos bugados&lt;/strong&gt;.
+                    </p>
+                </div>
+                <div class="col-12 col-md-8 col-lg-6 col-xl-4 ms-lg-3">
+                    <main class="form-signin w-100 shadow p-4 bg-white">
+                        <form id="form-login">
+                            <div class="input-group input-group-lg mb-2">
+                                <input type="text" name="usuario" placeholder="Usuário" class="form-control">
+                            </div>
+                            <div class="input-group input-group-lg mb-3">
+                                <input type="password" name="senha" placeholder="Senha" class="form-control">
+                            </div>
+                            <button class="w-100 btn btn-lg btn-success mb-3" type="submit">
+                                Entrar
+                            </button>
+                        </form>
+                        <hr>
+                        <div class="w-100 text-center">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#modal-cadastro" class="btn btn-link text-success text-decoration-none">
+                                Crie uma nova conta
+                            </button>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            <div class="bg-secondary bg-opacity-10 w-100 p-4 text-center text-dark fw-light">
+                Feito com ♥ na Formação Front-end <span class="d-none d-lg-inline">#OiDevs - By Ada</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-none flex-column tela" id="tela-feed">
+        <div class="modal fade" id="modal-lista-amigos" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Meus amigos <span class="badge bg-success" id="total-amigos"></span></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="lista-amigos" class="list-unstyled m-0">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-usuarios" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Todos os Usuários <span class="badge bg-success" id="total-usuarios"></span></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-unstyled m-0" id="lista-usuarios">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-editar-postagem" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-2 m-0 lh-1">Editar postagem</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3">
+                            <div class="col-md-12 input-group-lg">
+                                <input type="text" class="form-control" name="texto" placeholder="Insira um texto" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success btn-lg w-75 m-auto mt-2" type="submit">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-success p-2 px-3 d-flex flex-column flex-sm-row justify-content-between align-items-center shadow-lg sticky-top">
+            <h2 class="h4 text-white fw-bold m-0 mb-3 mb-sm-0">Connect<span class="fw-light">Ada</span></h2>
+            <div class="d-flex flex-row">
+                <img src="" class="rounded-circle me-3" id="header-imagem-perfil" height="50" alt="">
+                <div class="text-white">
+                    <p class="m-0 fw-bold" id="header-saudacao"></p>
+                    <div class="d-flex">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#modal-usuarios" class="btn btn-sm p-0 text-white me-2"><i class="bi bi-person-fill"></i> Usuários</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#modal-lista-amigos" class="btn btn-sm p-0 text-white me-2"><i class="bi bi-people-fill"></i> Amigos</button>
+                        <button type="button" id="btn-sair" class="btn btn-sm p-0 text-white"><i class="bi bi-box-arrow-right"></i> Sair</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container my-3 d-flex flex-column flex-grow-1">
+            <div class="card w-100 mt-3 shadow-sm">
+                <div class="card-body d-flex align-items-center">
+                    <img src="" class="rounded-circle me-3" id="postagem-imagem-perfil" height="50" width="50" alt="">
+                    <form class="w-100" id="form-publicar">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="descricao" placeholder="No que você está pensando, pequeno gafanhoto?">
+                            <button class="btn btn-success" type="submit">Publicar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column flex-grow-1" id="postagens">
+            </div>
+        </div>
+
+        <div class="bg-secondary bg-opacity-10 w-100 p-4 text-center text-dark fw-light">
+            Feito com ♥ na Formação Front-end <span class="d-none d-lg-inline">#OiDevs - By Ada</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="./main.js" type="module"></script>
+</body>
+</html>
